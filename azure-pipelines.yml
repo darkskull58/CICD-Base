@@ -12,9 +12,9 @@ variables:
 
 
 trigger:
-- if [[ apptype: 'angular' ]];
-  - master
 - if [[ apptype: 'dotnet' ]];
+  - master
+- if [[ apptype: 'angular' ]];
   - batch: true
   - branches:
    - include:
