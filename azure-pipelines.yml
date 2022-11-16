@@ -9,4 +9,5 @@ variables:
 - template: variables/variables.yml@templates
 
 stages:
-- template: azure-template.yml@templates  
+- if [apptype: 'angular'] 
+
