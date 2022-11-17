@@ -24,7 +24,7 @@ resources:
   #  endpoint: parameters.endpoint
 
 variables:
-- template: variables.yml@parameters.repository
+- template: variables.yml@javaADO
 
 stages:
 - ${{ if eq(variables.appType,'angular') }}:
