@@ -30,7 +30,7 @@ parameters:
   
   
 stages:
-- ${{ if eq(variables.appType,'angular') }}:
+- ${{ if eq(parameters.appType,'angular') }}:
   - stage: build
     displayName: Build
     jobs:
@@ -85,7 +85,7 @@ stages:
         - template: copypublish.yml
 
 
-- ${{ if eq(variables.appType,'dotnet') }}:
+- ${{ if eq(parameters.appType,'dotnet') }}:
   - stage: build
     displayName: Build
     jobs:
@@ -113,7 +113,7 @@ stages:
       - template: copypublish.yml
 
 
-- ${{ if eq(variables.appType,'java-docker') }}:
+- ${{ if eq(parameters.appType,'java-docker') }}:
   - stage: Build
     displayName: Build and push stage
     jobs:
@@ -134,14 +134,14 @@ stages:
           sonarQubeRunAnalysis: false
       -  template: dockerbnp.yml
 
-- ${{ if eq(variables.appType,'java') }}:
+- ${{ if eq(parameters.appType,'java') }}:
   - stage: Build
     displayName: Build and push stage
     jobs:
     - job: Build
       displayName: Build
       pool:
-        vmImage: $(vmImageName)
+        vmImage: ${{ parameters.vmimage }}
       steps:
       - task: Maven@4
         inputs:
