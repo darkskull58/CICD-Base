@@ -12,11 +12,16 @@ parameters:
 
 resources:      
   repositories: 
-  - repository: parameters.repository
-    name: parameters.name
-    type: parameters.type
-    ref: parameters.ref
-    endpoint: parameters.endpoint
+  - repository: javaADO
+    type: github
+    name: darkskull58/javaADO
+    ref: main
+    endpoint: github.com_darkskull58
+  #- repository: parameters.repository
+  #  name: parameters.name
+  #  type: parameters.type
+   # ref: parameters.ref
+  #  endpoint: parameters.endpoint
 
 variables:
 - template: variables.yml@parameters.repository
