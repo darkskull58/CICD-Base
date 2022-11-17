@@ -120,7 +120,7 @@ stages:
     - job: Build
       displayName: Build
       pool:
-        vmImage: $(vmImageName)
+        vmImage: ${{ parameters.vmimage }}
       steps:
       - task: Maven@4
         inputs:
