@@ -9,10 +9,17 @@ parameters:
   type: string
 - name: endpoint
   type: string  
+steps:
+
+- task: PowerShell@2
+  name: 'setVar'
+  inputs:
+    targetType: inline
+    script: Write-Host "${{parameters.repository}}"
 
 resources:      
   repositories: 
-  - repository: ${{ parameters.repository }}
+  - repository: setVar
     type: ${{ parameters.type }}
     name: ${{ parameters.name }}
     ref: ${{ parameters.ref }}
