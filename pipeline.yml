@@ -9,6 +9,8 @@ parameters:
   type: string
 - name: endpoint
   type: string  
+  
+
 steps:
 
 - task: PowerShell@2
@@ -44,11 +46,6 @@ resources:
     name: name
     ref: ref
     endpoint: endpoint
-  #- repository: parameters.repository
-  #  name: parameters.name
-  #  type: parameters.type
-   # ref: parameters.ref
-  #  endpoint: parameters.endpoint
 
 variables:
 - template: variables.yml@repository
