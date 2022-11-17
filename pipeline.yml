@@ -1,4 +1,5 @@
 stages:
+- stage:
 - ${{ if eq(variables.appType,'angular') }}:
   - stage: build
     displayName: Build
