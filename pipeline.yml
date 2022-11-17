@@ -1,5 +1,30 @@
+parameters:
+- name: 'repository'
+  default: ''
+  type: string
+- name: 'name'
+  default: ''
+  type: string
+- name: 'type'
+  default: ''
+  type: string
+- name: 'ref'
+  default: ''
+  type: string
+- name: 'endpoint'
+  default: ''
+  type: string  
+
+resources:      
+  repositories: 
+  - repository: ${{ parameters.repository }}
+    name: ${{ parameters.name }}
+    type: ${{ parameters.type }}
+    ref: ${{ parameters.ref }}
+    endpoint: ${{ parameters.endpoint }}
+
 stages:
-- ${{ if eq(variables.appType,'angular') }}:
+- ${{ if eq(variables.yml@${{ parameters.repository }}.appType,'angular') }}:
   - stage: build
     displayName: Build
     jobs:
@@ -54,7 +79,7 @@ stages:
         - template: copypublish.yml
 
 
-- ${{ if eq(variables.appType,'dotnet') }}:
+- ${{ if eq(variables.yml@${{ parameters.repository }}.appType,'dotnet') }}:
   - stage: build
     displayName: Build
     jobs:
@@ -82,7 +107,7 @@ stages:
       - template: copypublish.yml
 
 
-- ${{ if eq(variables.appType,'java-docker') }}:
+- ${{ if eq(variables.yml@${{ parameters.repository }}.appType,'java-docker') }}:
   - stage: Build
     displayName: Build and push stage
     jobs:
@@ -103,7 +128,7 @@ stages:
           sonarQubeRunAnalysis: false
       -  template: dockerbnp.yml
 
-- ${{ if eq(variables.appType,'java') }}:
+- ${{ if eq(variables.yml@${{ parameters.repository }}.appType,'java') }}:
   - stage: Build
     displayName: Build and push stage
     jobs:
