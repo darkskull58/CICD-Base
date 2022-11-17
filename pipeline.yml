@@ -1,27 +1,22 @@
 parameters:
 - name: 'repository'
-  default: ''
   type: string
 - name: 'name'
-  default: ''
   type: string
 - name: 'type'
-  default: ''
   type: string
 - name: 'ref'
-  default: ''
   type: string
 - name: 'endpoint'
-  default: ''
   type: string  
 
 resources:      
   repositories: 
-  - repository: ${{ parameters.repository }}
-    name: ${{ parameters.name }}
-    type: ${{ parameters.type }}
-    ref: ${{ parameters.ref }}
-    endpoint: ${{ parameters.endpoint }}
+  - repository: parameters.repository
+    name: parameters.name
+    type: parameters.type
+    ref: parameters.ref
+    endpoint: parameters.endpoint
 
 stages:
 - ${{ if eq(variables.yml@${{ parameters.repository }}.appType,'angular') }}:
