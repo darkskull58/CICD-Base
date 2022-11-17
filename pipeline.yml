@@ -12,18 +12,38 @@ parameters:
 steps:
 
 - task: PowerShell@2
-  name: 'setVar'
+  name: 'repository'
   inputs:
     targetType: inline
     script: Write-Host "${{parameters.repository}}"
+- task: PowerShell@2
+  name: 'name'
+  inputs:
+    targetType: inline
+    script: Write-Host "${{parameters.name}}"
+- task: PowerShell@2
+  name: 'type'
+  inputs:
+    targetType: inline
+    script: Write-Host "${{parameters.type}}"
+- task: PowerShell@2
+  name: 'ref'
+  inputs:
+    targetType: inline
+    script: Write-Host "${{parameters.ref}}"
+- task: PowerShell@2
+  name: 'endpoint'
+  inputs:
+    targetType: inline
+    script: Write-Host "${{parameters.endpoint}}"
 
 resources:      
   repositories: 
-  - repository: setVar
-    type: ${{ parameters.type }}
-    name: ${{ parameters.name }}
-    ref: ${{ parameters.ref }}
-    endpoint: ${{ parameters.endpoint }}
+  - repository: repository
+    type: type
+    name: name
+    ref: ref
+    endpoint: endpoint
   #- repository: parameters.repository
   #  name: parameters.name
   #  type: parameters.type
@@ -31,7 +51,7 @@ resources:
   #  endpoint: parameters.endpoint
 
 variables:
-- template: variables.yml@javaADO
+- template: variables.yml@repository
 
 stages:
 - ${{ if eq(variables.appType,'angular') }}:
