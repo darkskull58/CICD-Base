@@ -1,22 +1,22 @@
 parameters:
-- name: 'repository'
+- name: repository
   type: string
-- name: 'name'
+- name: name
   type: string
-- name: 'type'
+- name: type
   type: string
-- name: 'ref'
+- name: ref
   type: string
-- name: 'endpoint'
+- name: endpoint
   type: string  
 
 resources:      
   repositories: 
-  - repository: javaADO
-    type: github
-    name: darkskull58/javaADO
-    ref: master
-    endpoint: github.com_darkskull58
+  - repository: ${{ parameters.repository }}
+    type: ${{ parameters.type }}
+    name: ${{ parameters.name }}
+    ref: ${{ parameters.ref }}
+    endpoint: ${{ parameters.endpoint }}
   #- repository: parameters.repository
   #  name: parameters.name
   #  type: parameters.type
