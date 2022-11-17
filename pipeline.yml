@@ -23,11 +23,11 @@ resources:
    # ref: parameters.ref
   #  endpoint: parameters.endpoint
 
-variables:
-- template: variables.yml@javaADO
+#variables:
+#- template: variables.yml@javaADO
 
 stages:
-- ${{ if eq(variables.appType,'angular') }}:
+- ${{ if eq(variables.yml@javaADO.appType,'angular') }}:
   - stage: build
     displayName: Build
     jobs:
