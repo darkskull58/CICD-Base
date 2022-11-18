@@ -61,7 +61,7 @@ stages:
         - publish: '$(Build.SourcesDirectory)/dist/foo'
           displayName: 'Publish Angular application'
           artifact: AngularApp
-        - template: copypublish.yml
+        #- template: copypublish.yml
 
 
 - ${{ if eq(variables.appType,'dotnet') }}:
