@@ -1,6 +1,0 @@
-resources: 
-  repositories: 
-  - repository: Shared 
-    name: Playground/Shared 
-    type: git 
-    ref: master #branch name
